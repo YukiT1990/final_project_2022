@@ -178,7 +178,7 @@ def gen_frames():
     cap.release()
     cv2.destroyAllWindows()
 
-def send_alert(time, intruder_content):
+def send_alert(date_time, intruder_content):
   csv_user = read_csv("./user_data/user")
   for row in csv_user:
     user_name = row[0]
@@ -186,6 +186,9 @@ def send_alert(time, intruder_content):
     break
   if user_email == "":
     return
+  date_and_time = date_time.split()
+  date = date_and_time[0]
+  time = date_and_time[1]
   intruders = intruder_content.split()
   pre_message = ""
   for i in range(len(intruders)):
@@ -199,8 +202,8 @@ def send_alert(time, intruder_content):
   from_email = account
 
   # email content
-  subject = "Intruder Alert for {}".format(user_name)
-  message = pre_message + time
+  subject = "Intruder Alert for {} at {}".format(user_name, time)
+  message = pre_message + time + " on " + date
   msg = MIMEText(message, "html")
   msg["Subject"] = subject
   msg["To"] = to_email
