@@ -145,7 +145,7 @@ def gen_frames():
                       user_email = row[1]
                       break
                     if user_email != "":
-                      break
+                      pass
 
             elif detection:  # already detected sb but not anymore
                 if timer_started:
