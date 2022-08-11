@@ -4,6 +4,9 @@ import time
 import datetime
 import csv
 import os
+from email.mime.text import MIMEText
+import smtplib
+import gmail_password
 
 app = Flask(__name__, static_folder='./static')
 data = []
@@ -21,6 +24,10 @@ translation = {
   }
 user_name = "Anonymous"
 user_email = ""
+
+# for sending alert email
+account = gmail_password.email_address
+password = gmail_password.email_password
 
 
 def gen_frames():  
@@ -132,20 +139,14 @@ def gen_frames():
                     detection = True
                     current_time = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
                     current_time_for_log = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-                    # inside static directry to play later on flask
+                    # store inside static directry to play later on flask
                     out = cv2.VideoWriter(f"static/recordings/{current_time}.mp4", fourcc, 20, frame_size)
                     print("Started Recording!")
                     # record log
                     with open("log/intruder_log.csv","a") as o:
                       print(current_time_for_log, intruder_types, sep=", ", file=o) 
                     # send alert email
-                    csv_user = read_csv("./user_data/user")
-                    for row in csv_user:
-                      user_name = row[0]
-                      user_email = row[1]
-                      break
-                    if user_email != "":
-                      pass
+                    send_alert(current_time_for_log, intruder_types)
 
             elif detection:  # already detected sb but not anymore
                 if timer_started:
@@ -176,6 +177,43 @@ def gen_frames():
     out.release()
     cap.release()
     cv2.destroyAllWindows()
+
+def send_alert(time, intruder_content):
+  csv_user = read_csv("./user_data/user")
+  for row in csv_user:
+    user_name = row[0]
+    user_email = row[1]
+    break
+  if user_email == "":
+    return
+  intruders = intruder_content.split()
+  pre_message = ""
+  for i in range(len(intruders)):
+    pre_message += translation[intruders[i]]
+    if i < len(intruders) - 1:
+      pre_message += ", "
+  pre_message += " is/are detected at "
+
+  # addresses
+  to_email = user_email
+  from_email = account
+
+  # email content
+  subject = "Intruder Alert for {}".format(user_name)
+  message = pre_message + time
+  msg = MIMEText(message, "html")
+  msg["Subject"] = subject
+  msg["To"] = to_email
+  msg["From"] = from_email
+
+  # send email
+  server = smtplib.SMTP("smtp.gmail.com", 587)
+  server.starttls()
+  server.login(account, password)
+  server.send_message(msg)
+  server.quit()
+  
+
 
 # top page
 @app.route('/')
