@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset=”UTF-8″>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sub_container1">
+        <a  href="{{ url_for('index') }}">Go back to INDEX PAGE</a>
+        <h1>{{ title }}</h1>
+        <p>{{ message }}</p>
+        <form action="/settings" method="POST" enctype="multipart/form-data">
+          <div>
+            <label for="name">Name: (half-width alphanumeric characters only)</label>
+          </div>
+          <div>
+            <input type="text" pattern="^[0-9A-Za-z]+$" id="name" name="name" placeholder="Name">
+          </div>
+          <div>
+            <label for="name">Email Address: </label>
+          </div>
+          <div>
+            <input type="email" id="email" name="email" placeholder="Email Adress">	
+          </div>
+          <div>
+            <input type="submit" value="submit">
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </body>
+
+</html>
