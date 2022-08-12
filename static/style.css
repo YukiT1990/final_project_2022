@@ -93,3 +93,31 @@ p {
   background-color: #3E4A74;
   border-radius: 10px;
 }
+
+.video_list {
+  display: flex;
+  background-color: #3E4A74;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.button {
+  background-color: #3E4A74;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.meta_data_container {
+  display: flex;
+  flex-direction: column;
+  background-color: #3E4A74;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 90%;
+}

@@ -1,104 +1,68 @@
-10/08/2022 23:27:27, human_face dog_face 
-10/08/2022 23:30:37, human_face dog_face 
-10/08/2022 23:31:07, bird_body 
-10/08/2022 23:31:26, bird_body 
-10/08/2022 23:32:03, human_face dog_face 
-10/08/2022 23:32:39, human_lower_body 
-10/08/2022 23:33:03, human_face dog_face 
-10/08/2022 23:33:10, human_face bird_body 
-10/08/2022 23:33:22, bird_body 
-10/08/2022 23:33:56, bird_body 
-10/08/2022 23:34:30, bird_body 
-10/08/2022 23:34:49, human_face 
-10/08/2022 23:34:59, cat_face 
-10/08/2022 23:35:05, human_face 
-10/08/2022 23:35:23, cat_face 
-10/08/2022 23:35:31, bird_body 
-10/08/2022 23:35:37, human_face dog_face 
-10/08/2022 23:35:51, human_face 
-10/08/2022 23:36:02, human_face 
-10/08/2022 23:36:08, human_face 
-10/08/2022 23:36:18, human_face dog_face 
-10/08/2022 23:36:31, dog_face 
-10/08/2022 23:36:59, cat_face 
-10/08/2022 23:37:14, cat_face 
-10/08/2022 23:37:57, human_face 
-10/08/2022 23:38:03, human_face dog_face 
-10/08/2022 23:38:28, bird_body 
-10/08/2022 23:38:39, human_face 
-10/08/2022 23:39:07, human_face 
-10/08/2022 23:39:20, cat_face 
-11/08/2022 12:24:37, human_face dog_face 
-11/08/2022 12:26:03, human_face dog_face 
-11/08/2022 12:26:11, human_face dog_face 
-11/08/2022 12:26:19, human_face dog_face 
-11/08/2022 12:27:19, human_face dog_face 
-11/08/2022 12:28:19, human_face dog_face 
-11/08/2022 12:28:21, human_face dog_face 
-11/08/2022 12:28:59, human_face dog_face 
-11/08/2022 12:29:15, human_face dog_face 
-11/08/2022 12:29:35, human_face dog_face 
-11/08/2022 12:30:35, human_face dog_face 
-11/08/2022 12:31:36, human_face dog_face 
-11/08/2022 12:32:36, human_face 
-11/08/2022 12:50:27, human_face dog_face 
-11/08/2022 12:51:00, human_face 
-11/08/2022 12:53:23, human_face dog_face 
-11/08/2022 13:06:51, human_face dog_face 
-11/08/2022 13:07:13, human_face 
-11/08/2022 13:10:02, human_face dog_face 
-11/08/2022 13:39:40, human_face dog_face 
-11/08/2022 13:41:06, human_face dog_face 
-11/08/2022 13:41:39, human_face dog_face 
-11/08/2022 13:43:27, human_face dog_face 
-11/08/2022 13:45:53, human_face 
-11/08/2022 13:47:11, human_face dog_face 
-11/08/2022 13:49:59, human_face cat_face dog_face 
-11/08/2022 13:50:48, dog_face 
-11/08/2022 13:51:05, human_face cat_face dog_face 
-11/08/2022 13:51:24, human_face dog_face 
-11/08/2022 13:51:45, human_face dog_face 
-11/08/2022 13:52:07, human_face dog_face 
-11/08/2022 13:52:20, human_face dog_face 
-11/08/2022 14:01:36, human_face dog_face 
-11/08/2022 14:02:11, human_face dog_face 
-11/08/2022 14:07:20, human_face dog_face 
-11/08/2022 14:08:56, human_face dog_face 
-11/08/2022 14:09:17, human_face dog_face 
-11/08/2022 14:10:56, human_face dog_face 
-11/08/2022 14:12:44, human_face dog_face 
-11/08/2022 14:13:37, human_face dog_face 
-11/08/2022 14:39:05, human_face dog_face 
-11/08/2022 14:40:39, human_face cat_face dog_face 
-11/08/2022 14:41:27, human_face 
-11/08/2022 15:55:07, human_face dog_face 
-11/08/2022 16:03:56, human_face dog_face 
-11/08/2022 16:04:29, human_upper_body 
-11/08/2022 16:05:02, human_face 
-11/08/2022 16:19:44, human_face dog_face 
-11/08/2022 16:20:07, bird_body 
-11/08/2022 16:20:25, bird_body 
-11/08/2022 16:20:46, bird_body 
-11/08/2022 16:20:57, bird_body 
-11/08/2022 16:21:16, human_face 
-11/08/2022 16:21:40, cat_face 
-11/08/2022 16:22:01, bird_body 
-11/08/2022 16:22:23, human_face 
-11/08/2022 16:22:49, human_upper_body 
-11/08/2022 16:23:27, cat_face 
-11/08/2022 16:23:40, cat_face 
-11/08/2022 16:24:22, human_face dog_face 
-11/08/2022 16:26:18, human_face 
-11/08/2022 16:27:00, cat_face 
-11/08/2022 16:27:47, cat_face 
-11/08/2022 16:28:03, bird_body 
-11/08/2022 16:28:54, dog_face 
-11/08/2022 16:29:45, human_upper_body 
-11/08/2022 16:30:22, human_upper_body 
-11/08/2022 16:30:44, dog_face 
-11/08/2022 16:35:08, human_face cat_face dog_face 
-11/08/2022 16:35:32, cat_face 
-11/08/2022 16:35:44, cat_face 
-11/08/2022 16:35:57, bird_body 
-11/08/2022 16:36:23, human_face 
-11/08/2022 16:36:32, bird_body 
+11/08/2022 18:24:43, human_face dog_face 
+11/08/2022 18:25:42, human_face dog_face 
+11/08/2022 18:26:11, human_face dog_face 
+11/08/2022 18:26:51, human_face human_upper_body dog_face 
+11/08/2022 18:28:05, human_face 
+11/08/2022 18:28:09, bird_body 
+11/08/2022 18:28:23, cat_face 
+11/08/2022 18:28:42, human_face 
+12/08/2022 13:00:58, human_face human_upper_body dog_face bird_body 
+12/08/2022 13:17:04, human_face cat_face dog_face 
+12/08/2022 13:23:58, human_face dog_face 
+12/08/2022 13:24:55, human_face dog_face 
+12/08/2022 13:41:57, human_face dog_face 
+12/08/2022 13:42:59, human_face cat_face dog_face 
+12/08/2022 13:44:33, dog_face 
+12/08/2022 13:49:18, dog_face 
+12/08/2022 14:14:09, human_face dog_face 
+12/08/2022 14:14:13, human_face dog_face 
+12/08/2022 14:14:54, human_face dog_face 
+12/08/2022 14:18:04, human_face dog_face 
+12/08/2022 14:18:08, human_face dog_face 
+12/08/2022 14:23:54, human_face dog_face 
+12/08/2022 14:24:31, human_face dog_face 
+12/08/2022 14:26:09, human_face dog_face 
+12/08/2022 14:30:11, human_face dog_face 
+12/08/2022 14:30:48, human_face dog_face 
+12/08/2022 14:32:42, human_face dog_face 
+12/08/2022 14:50:33, human_face dog_face bird_body 
+12/08/2022 14:52:50, human_face dog_face 
+12/08/2022 14:54:19, human_face dog_face 
+12/08/2022 14:55:43, human_face dog_face 
+12/08/2022 14:56:18, human_face dog_face 
+12/08/2022 14:57:07, human_face dog_face 
+12/08/2022 15:03:41, human_face dog_face 
+12/08/2022 15:11:07, human_face dog_face 
+12/08/2022 15:11:14, human_face dog_face 
+12/08/2022 15:14:03, human_face dog_face 
+12/08/2022 15:14:21, human_face 
+12/08/2022 15:15:37, human_face dog_face 
+12/08/2022 15:16:23, human_face dog_face 
+12/08/2022 15:18:31, human_face dog_face 
+12/08/2022 15:39:16, dog_face 
+12/08/2022 15:40:56, human_face dog_face 
+12/08/2022 15:45:09, human_face dog_face 
+12/08/2022 15:45:23, human_face dog_face 
+12/08/2022 15:46:04, human_face dog_face 
+12/08/2022 15:47:50, human_face dog_face 
+12/08/2022 15:50:04, human_face dog_face 
+12/08/2022 15:52:59, human_face dog_face 
+12/08/2022 15:54:25, human_face dog_face 
+12/08/2022 15:55:31, human_face 
+12/08/2022 15:56:25, human_face dog_face 
+12/08/2022 16:02:57, human_face dog_face 
+12/08/2022 16:07:28, human_face 
+12/08/2022 16:11:46, human_face dog_face 
+12/08/2022 16:11:57, human_face dog_face 
+12/08/2022 16:13:44, human_face dog_face 
+12/08/2022 16:16:20, human_face dog_face 
+12/08/2022 16:17:19, human_face dog_face 
+12/08/2022 16:18:10, human_face dog_face 
+12/08/2022 16:20:22, human_face dog_face 
+12/08/2022 16:21:43, human_face dog_face 
+12/08/2022 16:24:14, human_face dog_face 
+12/08/2022 16:25:57, human_face dog_face 
+12/08/2022 16:27:21, human_face dog_face 
+12/08/2022 16:27:41, human_face cat_face dog_face 
+12/08/2022 16:53:25, human_face dog_face 
+12/08/2022 16:53:29, human_face dog_face 

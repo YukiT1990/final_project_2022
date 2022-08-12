@@ -21,18 +21,21 @@
         </div>
         <div class="video_container">
           <img src="{{ url_for('video_feed') }}" width="90%" id="video">
-          <img src="../static/images/sample.jpg" alt="sample" width="90%" id="default_image" style="display: none;">
+          <img src="../static/images/sample.png" alt="sample" width="90%" id="default_image" style="display: none;">
+          
           <div class="option_container">
             <div class="option">
-              <a  href="{{ url_for('recordings') }}">
+              <a  href="{{ url_for('recordings_get') }}">
                 <p>Watch Recordings</p>
               </a>
             </div>
             <div class="option">
-              <p>See Meta Data</p>
+              <a  href="{{ url_for('logs_get') }}">
+                <p>Manage Logs</p>
+              </a>
             </div>
             <div class="option">
-              <p onclick="toggle_display()" id="on_off">Turn on the Camera</p>
+              <p onclick="toggle_display()" id="on_off">Turn off the Camera</p>
             </div>
             <div class="option">
               <a  href="{{ url_for('settings_get') }}">
@@ -49,7 +52,7 @@
         <div class="alert_container">
           <div class="alert_sub_container">
             <h3>Alert Logs</h3>
-            <button onclick="reload()">Reload</button>
+            <button onclick="reload()" class="button">Reload</button>
 
             {% for i in input_from_python %}
             <div class="alert">

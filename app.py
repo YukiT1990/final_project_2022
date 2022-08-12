@@ -7,6 +7,10 @@ import os
 from email.mime.text import MIMEText
 import smtplib
 import gmail_password
+import ffmpeg
+import sys
+from pprint import pprint
+import json
 
 app = Flask(__name__, static_folder='./static')
 data = []
@@ -137,7 +141,7 @@ def gen_frames():
                       intruder_types += "bird_body "
 
                     detection = True
-                    current_time = datetime.datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
+                    current_time = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
                     current_time_for_log = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                     # store inside static directry to play later on flask
                     out = cv2.VideoWriter(f"static/recordings/{current_time}.mp4", fourcc, 20, frame_size)
@@ -249,16 +253,88 @@ def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # recording list page
-@app.route('/recordings')
-def recordings():
+@app.route('/recordings', methods=['GET'])
+def recordings_get():
   directry = './static/recordings' # inside static directry to play on flask
   files = os.listdir(directry)
   filtered_files = []
   for i in range(len(files)):
     if os.path.splitext(files[i])[1] == ".mp4": # os.path.splitext()[1] stores file extension
         filtered_files.append(files[i])
-  # print(filtered_files)
-  return render_template('recordings.html', file_paths=filtered_files)
+  filtered_files.sort()
+  
+  chosen_video = ""
+  title = "Not Selected"
+  duration = "_"
+  codec = "_"
+  v_height = "_"
+  v_width = "_"
+  ratio = "_"
+
+  return render_template(
+    'recordings.html', 
+    file_paths=filtered_files, 
+    video_name=chosen_video, 
+    title=title,
+    duration=duration,
+    codec=codec,
+    v_height=v_height,
+    v_width=v_width,
+    ratio=ratio
+  )
+
+@app.route('/recordings', methods=['POST'])
+def recordings_post():
+  directry = './static/recordings' # inside static directry to play on flask
+  files = os.listdir(directry)
+  filtered_files = []
+  for i in range(len(files)):
+    if os.path.splitext(files[i])[1] == ".mp4": # os.path.splitext()[1] stores file extension
+        filtered_files.append(files[i])
+  filtered_files.sort()
+  
+  if request.form['video'][0] != "D":
+    chosen_video = request.form['video']
+
+    video_meta_data = ffmpeg.probe('./static/recordings/' + chosen_video)["streams"]
+    video_meta_data = video_meta_data[0]
+    
+    title = chosen_video
+    duration = video_meta_data['duration']
+    codec = video_meta_data['codec_long_name']
+    v_height = video_meta_data['coded_height']
+    v_width = video_meta_data['coded_width']
+    ratio = video_meta_data['display_aspect_ratio']
+  else:
+    chosen_video = request.form['video'][1:]
+    os.remove('./static/recordings/' + chosen_video)
+
+    files = os.listdir(directry)
+    filtered_files = []
+    for i in range(len(files)):
+      if os.path.splitext(files[i])[1] == ".mp4": # os.path.splitext()[1] stores file extension
+          filtered_files.append(files[i])
+    filtered_files.sort()
+
+    title = "Video Name " + chosen_video + " is deleted."
+    duration = "_"
+    codec = "_"
+    v_height = "_"
+    v_width = "_"
+    ratio = "_"
+    chosen_video = ""
+    
+  return render_template(
+    'recordings.html', 
+    file_paths=filtered_files, 
+    video_name=chosen_video, 
+    title=title,
+    duration=duration,
+    codec=codec,
+    v_height=v_height,
+    v_width=v_width,
+    ratio=ratio
+  )
 
 # settings page
 @app.route('/settings', methods=['GET'])
@@ -276,6 +352,11 @@ def settings_post():
   with open("user_data/user.csv","w") as o:
     print(user_name, user_email, sep=", ", file=o)
   return render_template('settings.html', title=title, message=message)
+
+# manage logs page
+@app.route('/logs', methods=['GET'])
+def logs_get():
+  return render_template('logs.html')
 
 if __name__=='__main__':
     app.run(debug=True)

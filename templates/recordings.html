@@ -12,14 +12,23 @@
       <div class="sub_container1">
         <a  href="{{ url_for('index') }}">Go back to INDEX PAGE</a>
         <h3>Watch Recordings</h3>
-        <p id="video_name">Not Selected</p>
+        <p id="video_name">{{title}}</p>
         <div class="video_container">
-          <!-- <img src="../static/images/sample.jpg" alt="sample" width="90%" id="default_image"> -->
           <video id='video_source' width="90%" controls>
-            <!-- <source id='video_source' src={{ url_for("static", filename="recordings/10-08-2022-12-38-23.mp4") }} type="video/mp4"> -->
-            <source src='' type="video/mp4">
-            <!-- <source src='static/recordings/10-08-2022-12-38-23.mp4' type="video/mp4"> -->
+            <source src='static/recordings/{{video_name}}' type="video/mp4">
           </video>
+          <div class="meta_data_container">
+            <p>Duration: {{duration}} seconds</p>
+            <p>Codec: {{codec}}</p>
+            <p>Video Height: {{v_height}} px</p>
+            <p>Video Width: {{v_width}} px</p>
+            <p>Display Aspect Ratio: {{ratio}}</p>
+            <form action="/recordings" method="POST" enctype="multipart/form-data">
+              <input type="hidden" id="video" name="video" value="D{{video_name}}">
+              <button type="submit" class="button">Delete</button>
+            </form>
+            
+          </div>
         </div>
       </div>
       
@@ -28,8 +37,14 @@
           <div class="alert_sub_container">
             <h3>Video Recordings</h3>
             {% for i in file_paths %}
-              <div class="alert">
-                <p onclick="set_chosen_src('{{i}}')">{{i}}</p>
+              <div class="video_list">
+                <form action="/recordings" method="POST" enctype="multipart/form-data">
+                  <input type="hidden" id="video" name="video" value="{{i}}">	
+                  <p>{{i}}</p>
+                  <!-- <input onclick="set_chosen_src('{{i}}')" type="submit" value='{{i}}' id="each_video">{{i}}</input> -->
+                  <input type="submit" value="watch" class="button">
+                </form>
+                
               </div>
             {% endfor %}
           </div>
@@ -38,15 +53,20 @@
       
     </div>
     <script>
-      const video_src = document.getElementById('video_source');
-      const chosen_video_name = document.getElementById('video_name');
+      // const video_src = document.getElementById('video_source');
+      // const chosen_video_name = document.getElementById('video_name');
       
-      function set_chosen_src(path) {
-        const src = `static/recordings/${path}`;
-        video_src.src = src;
-        chosen_video_name.innerHTML = path;
-        return;
-      }
+      // function set_chosen_src(path) {
+      //   const src = `static/recordings/${path}`;
+      //   video_src.src = src;
+      //   chosen_video_name.innerHTML = path;
+      //   return;
+      // }
+
+      // onclick="set_chosen_src('{{i}}')"
+      function reload() {
+        location.reload();
+      };
 
     </script>
   </body>
