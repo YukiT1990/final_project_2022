@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response, request
+from flask import Flask, render_template, Response, request, make_response
 import cv2
 import time
 import datetime
@@ -29,11 +29,11 @@ translation = {
 user_name = "Anonymous"
 user_email = ""
 
-# for sending alert email
+# importing account information from gitignored file for sending alert email
 account = gmail_password.email_address
 password = gmail_password.email_password
 
-
+# detecting intruders
 def gen_frames():  
     # https://github.com/opencv/opencv/tree/master/data/haarcascades
     # face detection
@@ -182,6 +182,7 @@ def gen_frames():
     cap.release()
     cv2.destroyAllWindows()
 
+# sending alert email
 def send_alert(date_time, intruder_content):
   csv_user = read_csv("./user_data/user")
   for row in csv_user:
@@ -219,12 +220,12 @@ def send_alert(date_time, intruder_content):
   server.login(account, password)
   server.send_message(msg)
   server.quit()
-  
 
 
 # top page
 @app.route('/')
 def index():
+    data = []
     csv_content = read_csv("./log/intruder_log")
     for row in csv_content:
         types = row[1].split()
@@ -242,12 +243,21 @@ def index():
       user_name = row[0]
       break
     
-    
-    return render_template('index.html',input_from_python= data, date=today, time=now, name=user_name, height=video_height, width=video_width)
+    return render_template(
+      'index.html',
+      intruder_log= data, 
+      date=today, 
+      time=now, 
+      name=user_name, 
+      height=video_height,
+      width=video_width
+    )
+
 def read_csv(filename):
     csv_file = open(str(filename) + ".csv", "r", encoding="ms932", errors="", newline="" )
     f = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
     return f
+
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -265,6 +275,7 @@ def recordings_get():
   
   chosen_video = ""
   title = "Not Selected"
+  frame_rate = "_"
   duration = "_"
   codec = "_"
   v_height = "_"
@@ -276,6 +287,7 @@ def recordings_get():
     file_paths=filtered_files, 
     video_name=chosen_video, 
     title=title,
+    frame_rate=frame_rate,
     duration=duration,
     codec=codec,
     v_height=v_height,
@@ -300,6 +312,7 @@ def recordings_post():
     video_meta_data = video_meta_data[0]
     
     title = chosen_video
+    frame_rate = video_meta_data['avg_frame_rate']
     duration = video_meta_data['duration']
     codec = video_meta_data['codec_long_name']
     v_height = video_meta_data['coded_height']
@@ -317,6 +330,7 @@ def recordings_post():
     filtered_files.sort()
 
     title = "Video Name " + chosen_video + " is deleted."
+    frame_rate = "_"
     duration = "_"
     codec = "_"
     v_height = "_"
@@ -329,6 +343,7 @@ def recordings_post():
     file_paths=filtered_files, 
     video_name=chosen_video, 
     title=title,
+    frame_rate=frame_rate,
     duration=duration,
     codec=codec,
     v_height=v_height,
@@ -356,7 +371,39 @@ def settings_post():
 # manage logs page
 @app.route('/logs', methods=['GET'])
 def logs_get():
-  return render_template('logs.html')
+  data = []
+  csv_content = read_csv("./log/intruder_log")
+  for row in csv_content:
+    types = row[1].split()
+    type_list = []
+    for i in range(len(types)):
+      type_list.append(translation[types[i]])
+    line = {"date": row[0], "type": type_list}
+    data.append(line)
+  return render_template('logs.html', intruder_log= data)
+
+@app.route('/logs', methods=['POST'])
+def logs_post():
+  if request.form['log'] == 'download': # download intruder log as a csv file
+    response = make_response()
+    response.data  = open('./log/intruder_log.csv', "rb").read()
+    response.headers['Content-Type'] = 'application/octet-stream'
+    response.headers['Content-Disposition'] = 'attachment; filename=intruder_log.csv'
+    return response
+  elif request.form['log'] == 'delete':
+    with open('./log/intruder_log.csv','w') as f:
+      pass
+
+  data = []
+  csv_content = read_csv("./log/intruder_log")
+  for row in csv_content:
+    types = row[1].split()
+    type_list = []
+    for i in range(len(types)):
+      type_list.append(translation[types[i]])
+    line = {"date": row[0], "type": type_list}
+    data.append(line)
+  return render_template('logs.html', intruder_log= data)
 
 if __name__=='__main__':
     app.run(debug=True)
@@ -367,4 +414,6 @@ if __name__=='__main__':
 References
 https://www.youtube.com/watch?v=mzX5oqd3pKA
 https://github.com/krishnaik06/Flask-Web-Framework
+https://remix-yh.net/1398/
+
 """

@@ -54,7 +54,7 @@
             <h3>Alert Logs</h3>
             <button onclick="reload()" class="button">Reload</button>
 
-            {% for i in input_from_python %}
+            {% for i in intruder_log %}
             <div class="alert">
                 {% for j in i.type %}
                 <p>{{j}} detected.</p>

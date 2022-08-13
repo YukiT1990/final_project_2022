@@ -11,6 +11,25 @@
       <div class="sub_container1">
         <a  href="{{ url_for('index') }}">Go back to INDEX PAGE</a>
         <h3>Manage Logs</h3>
+        <div class="option_container_logs">
+          <form action="/logs" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="log" name="log" value="download">
+            <button type="submit" class="button logs_button">Download Logs as a CSV file</button>
+          </form>
+          <form action="/logs" method="POST" enctype="multipart/form-data">
+            <input type="hidden" id="log" name="log" value="delete">
+            <button type="submit" class="button logs_button">Delete All Logs</button>
+          </form>
+        </div>
+        
+        {% for i in intruder_log %}
+        <div class="alert">
+          {% for j in i.type %}
+          <p>{{j}} detected.</p>
+          {% endfor %}
+          <p>{{i.date}}</p>
+        </div>
+        {% endfor %}
       </div>
       
     </div>

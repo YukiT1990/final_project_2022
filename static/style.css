@@ -121,3 +121,14 @@ p {
   margin-bottom: 10px;
   width: 90%;
 }
+
+.option_container_logs {
+  display: flex;
+  flex-direction: row;
+}
+
+.logs_button {
+  height: 50px;
+  width: 100%;
+  margin-right: 30px;
+}
