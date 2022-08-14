@@ -6,6 +6,7 @@ div.container {
   color: white;
   display: flex;
   flex-direction: row;
+  justify-content:center;
 }
 
 div.sub_container1 {
@@ -108,6 +109,7 @@ p {
   color: white;
   border-radius: 5px;
   margin-bottom: 5px;
+  min-height: 30px;
 }
 
 .meta_data_container {
@@ -122,13 +124,73 @@ p {
   width: 90%;
 }
 
+.form_container {
+  background-color: #282554;
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+div.label {
+  margin-bottom: 10px;
+}
+
+div.input {
+  margin-bottom: 20px;
+}
+
+.input_box {
+  width: 60%;
+  min-height: 30px;
+}
+
+div.container_logs {
+  display: flex;
+  color: white;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1000px;
+}
+
+div.sub_container_logs {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .option_container_logs {
   display: flex;
   flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.log {
+  background-color: #3E4A74;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .logs_button {
-  height: 50px;
-  width: 100%;
-  margin-right: 30px;
+  min-height: 50px;
+  margin-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  div.container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.sub_container1 {
+    
+  }
+
+  div.sub_container2 {
+    margin-left: 0px;
+  }
 }

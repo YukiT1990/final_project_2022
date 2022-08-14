@@ -329,7 +329,7 @@ def recordings_post():
           filtered_files.append(files[i])
     filtered_files.sort()
 
-    title = "Video Name " + chosen_video + " is deleted."
+    title = "Video Name " + chosen_video + " was deleted."
     frame_rate = "_"
     duration = "_"
     codec = "_"
@@ -390,7 +390,7 @@ def logs_post():
     response.headers['Content-Type'] = 'application/octet-stream'
     response.headers['Content-Disposition'] = 'attachment; filename=intruder_log.csv'
     return response
-  elif request.form['log'] == 'delete':
+  elif request.form['log'] == 'delete': # delete all logs
     with open('./log/intruder_log.csv','w') as f:
       pass
 
@@ -412,8 +412,13 @@ if __name__=='__main__':
 
 """
 References
+https://www.youtube.com/watch?v=Exic9E5rNok
+https://github.com/techwithtim/Python-Security-Camera
 https://www.youtube.com/watch?v=mzX5oqd3pKA
 https://github.com/krishnaik06/Flask-Web-Framework
 https://remix-yh.net/1398/
+https://qiita.com/ka215/items/795a179041c705bef03b
+https://developer.mozilla.org/ja/docs/Web/HTML/Attributes/pattern
+https://www.python.ambitious-engineer.com/archives/2034
 
 """

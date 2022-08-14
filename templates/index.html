@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta charset=”UTF-8″>
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
 
@@ -81,7 +82,6 @@
           output.innerHTML = "Turn off the Camera";
           return
         } else {
-          //can be: flex, grid, etc...
           video_div.style.display = "none";
           image_div.style.display = "block";
           video_off = true;

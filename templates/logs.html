@@ -7,8 +7,8 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="sub_container1">
+    <div class="container_logs">
+      <div class="sub_container_logs">
         <a  href="{{ url_for('index') }}">Go back to INDEX PAGE</a>
         <h3>Manage Logs</h3>
         <div class="option_container_logs">
@@ -23,7 +23,7 @@
         </div>
         
         {% for i in intruder_log %}
-        <div class="alert">
+        <div class="log">
           {% for j in i.type %}
           <p>{{j}} detected.</p>
           {% endfor %}

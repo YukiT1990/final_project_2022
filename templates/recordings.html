@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta charset=”UTF-8″>
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
 
@@ -42,7 +43,6 @@
                 <form action="/recordings" method="POST" enctype="multipart/form-data">
                   <input type="hidden" id="video" name="video" value="{{i}}">	
                   <p>{{i}}</p>
-                  <!-- <input onclick="set_chosen_src('{{i}}')" type="submit" value='{{i}}' id="each_video">{{i}}</input> -->
                   <input type="submit" value="watch" class="button">
                 </form>
                 
@@ -54,21 +54,9 @@
       
     </div>
     <script>
-      // const video_src = document.getElementById('video_source');
-      // const chosen_video_name = document.getElementById('video_name');
-      
-      // function set_chosen_src(path) {
-      //   const src = `static/recordings/${path}`;
-      //   video_src.src = src;
-      //   chosen_video_name.innerHTML = path;
-      //   return;
-      // }
-
-      // onclick="set_chosen_src('{{i}}')"
       function reload() {
         location.reload();
       };
-
     </script>
   </body>
 </html>
