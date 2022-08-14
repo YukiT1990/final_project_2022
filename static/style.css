@@ -22,6 +22,10 @@ p {
   text-align: center;
 }
 
+a {
+  color: #FFFFFF;
+  }
+
 .video_container {
   background-color:#282554;
   display: flex;
