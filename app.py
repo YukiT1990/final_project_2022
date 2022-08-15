@@ -175,7 +175,7 @@ def gen_frames():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
     
     # after finishing while loop
-    # such as pressing stop button
+    # release everything if job is finished
     out.release()
     cap.release()
     cv2.destroyAllWindows()

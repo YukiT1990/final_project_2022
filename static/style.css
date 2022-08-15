@@ -92,6 +92,8 @@ a {
 .alert_sub_container {
   padding-left: 10px;
   padding-right: 10px;
+  overflow: auto;
+  height: 800px;
 }
 
 .alert {
