@@ -168,8 +168,6 @@ def gen_frames():
             if detection:
                 out.write(frame)
 
-            # if pressing stop button 
-            # break
 
             ret, buffer = cv2.imencode('.jpg', frame)
             frame = buffer.tobytes()
