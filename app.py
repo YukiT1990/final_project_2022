@@ -150,7 +150,8 @@ def gen_frames():
                     with open("log/intruder_log.csv","a") as o:
                       print(current_time_for_log, intruder_types, sep=", ", file=o) 
                     # send alert email
-                    send_alert(current_time_for_log, intruder_types)
+                    if os.stat("./user_data/user.csv").st_size > 0:
+                      send_alert(current_time_for_log, intruder_types)
 
             elif detection:  # already detected sb but not anymore
                 if timer_started:
@@ -236,10 +237,13 @@ def index():
     today = datetime.datetime.now().strftime("%d/%m/%Y")
     now = datetime.datetime.now().strftime("%H:%M")
 
-    csv_user = read_csv("./user_data/user")
-    for row in csv_user:
-      user_name = row[0]
-      break
+    if os.stat("./user_data/user.csv").st_size > 0:
+      csv_user = read_csv("./user_data/user")
+      for row in csv_user:
+        user_name = row[0]
+        break
+    else:
+      user_name = "Anonymous"
     
     return render_template(
       'index.html',
